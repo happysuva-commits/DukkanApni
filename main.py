@@ -72,9 +72,11 @@ while True:
 
     # Add Product
     if choice == "1":
-        name = input("Enter product name: ").strip() #duplicate same product sae bachva
+        name = input("Enter product name: ").strip() #space remove karva
+        #duplicate same product sae bachva
         if any(p["name"].lower() == name.lower() for p in products):
             print("Product already exists!")
+            #ano matlb current loop muki farii menu ma jav
             continue
         try:
             price = float(input("Enter product price: "))
@@ -82,19 +84,22 @@ while True:
 
             if price <= 0 or quantity <= 0:
                 print("Price and quantity must be positive!")
+                #a product add karya vagar menu par pacha jav
                 continue
-
+            
+            # Product ni details dictionary ma store karo
+            
             new_product = {
                 "name": name,
                 "price": price,
                 "quantity": quantity
             }
-
+            #navo product list ma add karva
             products.append(new_product)
-            save_products()
+            save_products() #update product json ma save karva
 
             print("Product added successfully!")
-
+        #qunty ma invalid  no nakhe to error 
         except ValueError:
             print("Please enter valid numbers!")
 
